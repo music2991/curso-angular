@@ -1,0 +1,24 @@
+.BlueBackground {
+    background: lightblue !important;
+}
+
+.GreenBackground {
+    background: lightgreen !important;
+}
+
+.Padding20px {
+    padding: 20px;
+}
+
+.MiddleSize{
+    font-size: 18px;
+}
+
+.linkActivated {
+    background: #303030;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    color: white !important;
+    margin: 10px;
+}

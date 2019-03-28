@@ -1,0 +1,70 @@
+<h1>Cars Component</h1>
+
+<style>
+    div {
+        float: left;
+        margin: 25px;
+    }
+    form {
+        width: 200px;
+    }
+    
+    input[type="text"], span {
+        display: block;
+        width: 100%;
+    }
+</style>
+
+<div>
+    <form #formCar="ngForm" (ngSubmit)="onSubmit(); formCar.reset();">
+        <p>
+            <label for="name">Name:</label>
+            <input type="text" name="name" #name="ngModel" [(ngModel)]="car.name" required>
+            <span *ngIf="name.touched && !name.valid">
+                The car name is wrong!
+            </span>
+        </p>
+        
+        <p>
+            <label for="year">Year:</label>
+            <input type="text" name="year" #year="ngModel" [(ngModel)]="car.year" required 
+            pattern="[0-9]+">
+            <span *ngIf="year.touched && !year.valid">
+                The Year is wrong!
+            </span>
+        </p>
+
+        <p>
+            <label for="color">Color:</label>
+            <input type="text" name="color" #color="ngModel" [(ngModel)]="car.color" required
+            pattern="[a-zA-Z#]+">
+            <span *ngIf="color.touched && !color.valid">
+                The color value is wrong!
+            </span>
+        </p>
+        <input type="submit" value="save" [disabled]="!formCar.form.valid">
+    </form>
+</div>
+
+<div>
+    <h4>Car list</h4>
+    <ul>
+        <li *ngFor="let car of cars">
+            {{car.name}} - {{car.year}} - {{car.color}}
+        </li>
+    </ul>
+
+</div>
+
+<div>
+    <h4>Articles</h4>
+    <div *ngIf="articles">
+        <ul *ngFor="let article of articles">
+            <li><strong>UserId:</strong> {{article.userId}}</li>
+            <li><strong>Id:</strong> {{article.id}}</li>
+            <li><strong>Title:</strong> {{article.title}}</li>
+            <li><strong>Body:</strong> {{article.body}}</li>
+        </ul>
+    </div>
+    <span *ngIf="!articles">Uploading data...</span>
+</div>

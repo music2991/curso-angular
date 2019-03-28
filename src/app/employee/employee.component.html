@@ -1,0 +1,102 @@
+<h1>{{title}}</h1>
+
+<h2>Information:</h2>
+
+<div *ngIf="externalWorker == true">
+    <button (click)="updateExternalWorker(false)">Turn to external worker</button>
+    <ul>
+        <li>Name: {{name}}</li>
+        <li>Age: {{year}}</li>
+        <li *ngIf="isMan == true">Is a man</li>
+        <li *ngIf="isMan == false">Is NOT man</li>
+        <li>Address: {{address}}</li>
+        <li>City: {{city}}</li>
+        <li>Private: {{varPrivate}}</li>
+        <strong>Employee of the Month:</strong>
+        <ul>Name: {{employeeEmbedded.name}}</ul>
+    </ul>
+</div>
+
+<div *ngIf="externalWorker == false">
+    <button (click)="updateExternalWorker(true)">Turn to internal worker</button>
+    <ul>
+        <h4>This is not a external employed</h4>
+        <li>Name: {{employeeEmbedded.name}}</li>
+        <li>Age: {{employeeEmbedded.age}}</li>
+    </ul>
+</div>
+
+<hr>
+<h3>Color selector:</h3>
+<input type="text" name="" id="" [(ngModel)]="selectedColor">
+<pre 
+    [style.border]="selectedColor == 'red' ? '5px solid black' : '1px solid green' "
+    [class.BlueBackground]="selectedColor == 'blue' "
+    [ngClass]="{
+        Padding20px: selectedColor == '20px',
+        GreenBackground: selectedColor == 'green',
+        MiddleSize: 1 == 1
+    }"
+>
+    Selected color: {{selectedColor}}
+
+    Special values:
+    * 20px: padding: 20px
+    * red: border = 5px solid black
+    * blue: background: lightblue
+    * green: background: lightgreen
+</pre>
+
+<div [ngStyle]="{
+    'background': selectedColor,
+    'width': '200px',
+    'height': '200px',
+    'float': 'right',
+    'margin-right': '69%'
+}"></div>
+
+<div style="clear:both"></div>
+
+<hr>
+<div id="div-ngSwitch">
+    <h4>ngSwitch directive:</h4>
+    <ul [ngSwitch]="color">
+        <li *ngSwitchCase= "'red'" [ngStyle]="
+        {
+            'background':color, 
+            'color':'white',
+            'padding': '10px'
+        }">Is a red color</li>
+    </ul>
+    <ul [ngSwitch]="color">
+            <li *ngSwitchCase= "'blue'" [ngStyle]="
+            {
+                'background':color, 
+                'color':'white',
+                'padding': '10px'
+            }">Is a blue color</li>
+    </ul>
+    <ul [ngSwitch]="color">
+            <li *ngSwitchCase= "'green'" [ngStyle]="
+            {
+                'background':color, 
+                'color':'white',
+                'padding': '10px'
+            }">Is a green color</li>
+        </ul>
+</div>
+
+<hr>
+<div id="div-ngFor">
+    <h4>ngFor directive:</h4>
+    <ul>
+        Worker list:
+        <li *ngFor= "let worker of workers; let i=index">
+            <strong>{{i+1}}.- Worker:</strong>
+            <ul>
+                <li>Name: {{worker.name}}</li>
+                <li>Age: {{worker.age}}</li>
+            </ul>
+        </li>
+    </ul>
+</div>
