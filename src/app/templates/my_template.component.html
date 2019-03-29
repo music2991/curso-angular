@@ -1,0 +1,21 @@
+<h4>{{title}}</h4>
+
+<button (click)='updateAdminState(!admin)'>Update admin state now is: {{admin}}</button>
+<div *ngIf="admin; else noAdmin">
+    <br>
+    <strong>You are an administrator</strong>
+</div>
+
+<ng-template #admin>
+    <div>
+        <br>
+        <strong>You are an administrator</strong>
+    </div>
+</ng-template>
+
+<ng-template #noAdmin>
+    <div>
+        <br>
+        <strong>You are not an administrator :(</strong>
+    </div>
+</ng-template>
