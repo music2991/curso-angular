@@ -10,6 +10,7 @@ import { HomeComponent }      from './home/home.component';
 import { ContactComponent }   from './contact/contact.component';
 import { NotFoundComponent }  from './404/404.component';
 import { CarComponent}        from './cars/car.component';
+import { MyTemplateComponent }    from './templates/my_template.component'
 
 // Routing:
 //import { AppRoutingModule } from './app-routing.module';
@@ -30,7 +31,8 @@ import {HttpClientModule} from '@angular/common/http';
     ContactComponent,
     CarComponent,
     NotFoundComponent,
-    ConverterPipe  
+    ConverterPipe,
+    MyTemplateComponent
   ],
   imports: [
     BrowserModule,
